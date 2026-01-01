@@ -1,9 +1,7 @@
-#![allow(dead_code)]
-#![allow(unused_variables)]
-
 use std::fmt::Display;
+use strum_macros::{EnumIter, VariantArray};
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone, EnumIter, VariantArray)]
 pub enum Status {
     InProgress,
     Abandoned,
@@ -23,33 +21,33 @@ pub struct Todo {
 }
 
 impl Todo {
-    pub fn new(name: String, description: String) -> Self {
+    pub fn new(name: impl Into<String>, description: impl Into<String>) -> Self {
         Self {
-            name: name,
-            description: description,
+            name: name.into(),
+            description: description.into(),
             status: Status::InProgress,
         }
     }
 
     pub fn get_name(&self) -> &str {
-        self.name.as_str()
+        &self.name
     }
 
     pub fn get_description(&self) -> &str {
-        self.description.as_str()
+        &self.description
     }
 
     pub fn get_status(&self) -> &Status {
         &self.status
     }
 
-    pub fn change_status(&mut self, status: Status) -> () {
+    pub fn change_status(&mut self, status: Status) {
         self.status = status;
     }
 }
 
 pub struct Todos {
-    pub todos: Vec<Todo>,
+    todos: Vec<Todo>,
 }
 
 impl Todos {
@@ -57,7 +55,11 @@ impl Todos {
         Self { todos: Vec::new() }
     }
 
-    pub fn add_todo(&mut self, todo: Todo) -> () {
+    pub fn get_todos(&self) -> &Vec<Todo> {
+        &self.todos
+    }
+
+    pub fn add_todo(&mut self, todo: Todo) {
         self.todos.push(todo);
     }
 
