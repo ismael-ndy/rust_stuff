@@ -8,18 +8,17 @@ Each project focuses on a specific aspect of the language and is intentionally k
 
 ## 📦 Projects
 
-### ✅ TODO CLI
+### ✅ [TODO CLI](https://github.com/ismael-ndy/rust_stuff/tree/main/todo-cli)
 
 A simple command-line TODO application.
 
 **Features**
 
-- Add new todos
+- Add todos with a title and description
 - List existing todos
-- Store todos in memory
+- Update todo status (In Progress / Abandoned / Finished)
+- Delete todos
 
-**Planned Improvements**
+### 🐙 [Nya](https://github.com/ismael-ndy/rust_stuff/tree/main/nya)
 
-- Save and load todos from a file (JSON)
-- Edit and delete todos
-- Improve CLI UX
+A Git-like VCS
